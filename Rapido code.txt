@@ -1,0 +1,749 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rapido - Ride Made Easy</title>
+
+<style>
+:root {
+  --yellow: #ffd500;
+  --black: #171717;
+  --gray: #686868;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: var(--black);
+  background: white;
+}
+
+/* NAVIGATION */
+
+header {
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6%;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.logo span {
+  color: #c69e00;
+}
+
+nav {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+nav a {
+  text-decoration: none;
+  color: #222;
+  font-weight: bold;
+}
+
+button {
+  cursor: pointer;
+}
+
+.pill {
+  background: var(--yellow);
+  border: none;
+  border-radius: 30px;
+  padding: 13px 23px;
+  font-weight: bold;
+}
+
+/* HERO SECTION */
+
+.hero {
+  background: linear-gradient(110deg, #fff9d8, white);
+  padding: 65px 6%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.eyebrow {
+  color: #876c00;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+h1 {
+  font-size: clamp(42px, 6vw, 70px);
+  line-height: 1.05;
+  margin: 20px 0;
+  letter-spacing: -2px;
+}
+
+.hero p {
+  font-size: 18px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+/* BOOKING FORM */
+
+.booking {
+  background: white;
+  padding: 28px;
+  border-radius: 20px;
+  box-shadow: 0 15px 45px #00000015;
+  max-width: 500px;
+}
+
+.booking h2 {
+  margin-bottom: 10px;
+}
+
+.booking p {
+  color: gray;
+  font-size: 13px;
+}
+
+.field {
+  margin: 18px 0;
+}
+
+.field label {
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 9px;
+  font-size: 15px;
+}
+
+.bookbtn {
+  width: 100%;
+  background: var(--yellow);
+  border: none;
+  border-radius: 10px;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.bookbtn:hover,
+.pill:hover {
+  background: #efc900;
+}
+
+/* ILLUSTRATION */
+
+.art {
+  display: grid;
+  place-items: center;
+}
+
+.city {
+  width: 100%;
+  max-width: 500px;
+  height: 340px;
+  background: #ffe985;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+.road {
+  position: absolute;
+  width: 130%;
+  height: 110px;
+  background: #333;
+  top: 125px;
+  left: -10%;
+  transform: rotate(-18deg);
+}
+
+.scooter {
+  position: absolute;
+  left: 35%;
+  top: 95px;
+  font-size: 110px;
+}
+
+.pin {
+  position: absolute;
+  right: 10%;
+  top: 30px;
+  background: white;
+  padding: 13px;
+  border-radius: 12px;
+}
+
+.float {
+  position: absolute;
+  left: 5%;
+  bottom: 20px;
+  background: white;
+  padding: 14px;
+  border-radius: 12px;
+}
+
+/* SERVICES */
+
+section {
+  padding: 75px 6%;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h2 {
+  font-size: 40px;
+  margin: 15px 0;
+}
+
+.center p {
+  color: gray;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 40px;
+}
+
+.card {
+  border: 1px solid #eee;
+  border-radius: 18px;
+  padding: 27px;
+}
+
+.emoji {
+  font-size: 42px;
+}
+
+.card h3 {
+  margin: 15px 0;
+}
+
+.card p {
+  color: gray;
+  line-height: 1.6;
+}
+
+/* HOW IT WORKS */
+
+.how {
+  background: #fafafa;
+}
+
+/* FOOTER */
+
+.yellowband {
+  background: var(--yellow);
+  padding: 50px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+footer {
+  background: #171717;
+  color: white;
+  padding: 45px 6%;
+}
+
+footer p {
+  color: #bbb;
+  margin-top: 15px;
+}
+
+/* BOOKING POPUP */
+
+.modalback {
+  position: fixed;
+  inset: 0;
+  background: #0008;
+  display: none;
+  place-items: center;
+  padding: 20px;
+  z-index: 30;
+}
+
+.modalback.show {
+  display: grid;
+}
+
+.modal {
+  background: white;
+  border-radius: 20px;
+  padding: 28px;
+  max-width: 450px;
+  width: 100%;
+}
+
+.close {
+  float: right;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 50%;
+}
+
+.ride-option {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 12px;
+  margin: 12px 0;
+  cursor: pointer;
+}
+
+.ride-option.selected {
+  border: 2px solid #d3ad00;
+  background: #fffbea;
+}
+
+.ride-option small {
+  display: block;
+  color: gray;
+  margin-top: 5px;
+}
+
+.price {
+  font-weight: bold;
+}
+
+#toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #222;
+  color: white;
+  padding: 14px 20px;
+  border-radius: 10px;
+  display: none;
+  z-index: 50;
+  text-align: center;
+}
+
+/* MOBILE RESPONSIVE */
+
+@media(max-width: 800px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  nav {
+    gap: 10px;
+  }
+
+  nav a:not(:last-child) {
+    display: none;
+  }
+
+  .yellowband {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<header>
+  <div class="logo">rapido<span>.</span></div>
+
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#how">How it works</a>
+    <a href="#about">About</a>
+    <a href="#book" class="pill">Book a ride</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+
+<main>
+
+<section class="hero" id="book">
+
+  <div>
+    <div class="eyebrow">INDIA MOVES WITH RAPIDO</div>
+
+    <h1>
+      Your city.<br>
+      Your ride.<br>
+      Your way.
+    </h1>
+
+    <p>
+      Quick, convenient rides for everyday journeys.
+      Choose a ride, enter your locations and get moving.
+    </p>
+
+    <a href="#bookingbox">
+      <button class="pill">Book your ride →</button>
+    </a>
+  </div>
+
+  <div class="art">
+    <div class="city">
+      <div class="road"></div>
+      <div class="scooter">🛵</div>
+      <div class="pin">📍 Your destination</div>
+      <div class="float">⚡ Quick pickup, easy ride</div>
+    </div>
+  </div>
+
+  <!-- BOOKING FORM -->
+
+  <div class="booking" id="bookingbox">
+
+    <h2>Where are you going?</h2>
+    <p>Enter your pickup and drop locations.</p>
+
+    <div class="field">
+      <label>PICKUP LOCATION</label>
+      <input id="pickup" placeholder="Enter pickup point">
+    </div>
+
+    <div class="field">
+      <label>DROP LOCATION</label>
+      <input id="drop" placeholder="Enter destination">
+    </div>
+
+    <div class="field">
+      <label>WHEN DO YOU NEED A RIDE?</label>
+
+      <select id="rideDate">
+        <option value="now">Ride now</option>
+        <option value="later">Schedule for later</option>
+      </select>
+    </div>
+
+    <button class="bookbtn" id="findRide">
+      Find a ride
+    </button>
+
+  </div>
+
+</section>
+
+<!-- SERVICES -->
+
+<section id="services">
+
+  <div class="center">
+    <div class="eyebrow">RIDE YOUR WAY</div>
+    <h2>One app. Many ways to move.</h2>
+    <p>Pick the ride that works for your trip.</p>
+  </div>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="emoji">🛵</div>
+      <h3>Bike Taxi</h3>
+      <p>
+        Beat the traffic and get across town
+        with a quick two-wheeler ride.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🛺</div>
+      <h3>Auto</h3>
+      <p>
+        A handy option for short city trips,
+        errands and everyday commutes.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🚕</div>
+      <h3>Cab</h3>
+      <p>
+        Enjoy a comfortable ride when
+        you want more room for your journey.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- HOW IT WORKS -->
+
+<section class="how" id="how">
+
+  <div class="center">
+    <div class="eyebrow">SIMPLE AS 1, 2, 3</div>
+    <h2>How it works</h2>
+  </div>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="emoji">📍</div>
+      <h3>1. Set your locations</h3>
+      <p>Tell us where your ride starts and where you want to go.</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🧾</div>
+      <h3>2. Choose a ride</h3>
+      <p>Compare ride options and estimated fares.</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🙌</div>
+      <h3>3. You're on your way</h3>
+      <p>Confirm your selection to see a demo booking confirmation.</p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ABOUT -->
+
+<div class="yellowband" id="about">
+
+  <div>
+    <h2>Make every trip a little easier.</h2>
+    <p>A simple city ride-booking experience.</p>
+  </div>
+
+  <button class="pill"
+    onclick="document.getElementById('pickup').focus()">
+    Plan a ride
+  </button>
+
+</div>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="logo">rapido<span>.</span></div>
+  <p>Ride made easy.</p>
+  <p>© 2026 Demo Website</p>
+  <p>Independent front-end demo, not affiliated with Rapido.</p>
+</footer>
+
+<!-- BOOKING POPUP -->
+
+<div class="modalback" id="modalback">
+
+  <div class="modal">
+
+    <button class="close" id="closeModal">✕</button>
+
+    <h2>Choose your ride</h2>
+
+    <p id="routeText"></p>
+
+    <div class="ride-option selected"
+      data-ride="Bike" data-price="42">
+
+      <div>
+        🛵 <strong>Bike</strong>
+        <small>Quick solo ride · 4 min away</small>
+      </div>
+
+      <div class="price">₹42</div>
+
+    </div>
+
+    <div class="ride-option"
+      data-ride="Auto" data-price="68">
+
+      <div>
+        🛺 <strong>Auto</strong>
+        <small>Everyday comfort · 6 min away</small>
+      </div>
+
+      <div class="price">₹68</div>
+
+    </div>
+
+    <div class="ride-option"
+      data-ride="Cab" data-price="125">
+
+      <div>
+        🚕 <strong>Cab</strong>
+        <small>More space · 8 min away</small>
+      </div>
+
+      <div class="price">₹125</div>
+
+    </div>
+
+    <button class="bookbtn" id="confirmRide">
+      Confirm demo booking
+    </button>
+
+    <p style="margin-top:15px;font-size:12px;color:gray">
+      Sample fares only. No real driver is contacted
+      and no real booking is made.
+    </p>
+
+  </div>
+
+</div>
+
+<div id="toast"></div>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+const $ = id => document.getElementById(id);
+
+let selectedRide = "Bike";
+let selectedPrice = 42;
+
+function toast(message) {
+
+  const t = $("toast");
+
+  t.textContent = message;
+  t.style.display = "block";
+
+  clearTimeout(window.toastTimer);
+
+  window.toastTimer = setTimeout(() => {
+    t.style.display = "none";
+  }, 3500);
+
+}
+
+// FIND RIDE BUTTON
+
+$("findRide").addEventListener("click", function() {
+
+  const pickup = $("pickup").value.trim();
+  const drop = $("drop").value.trim();
+
+  if (!pickup || !drop) {
+    toast("Please enter both pickup and drop locations.");
+    return;
+  }
+
+  if (pickup.toLowerCase() === drop.toLowerCase()) {
+    toast("Pickup and drop locations must be different.");
+    return;
+  }
+
+  $("routeText").textContent =
+    pickup + " → " + drop;
+
+  $("modalback").classList.add("show");
+
+});
+
+// SELECT RIDE
+
+document.querySelectorAll(".ride-option")
+.forEach(option => {
+
+  option.addEventListener("click", function() {
+
+    document.querySelectorAll(".ride-option")
+    .forEach(x => x.classList.remove("selected"));
+
+    option.classList.add("selected");
+
+    selectedRide = option.dataset.ride;
+    selectedPrice = Number(option.dataset.price);
+
+  });
+
+});
+
+// CLOSE POPUP
+
+function closeModal() {
+  $("modalback").classList.remove("show");
+}
+
+$("closeModal").addEventListener("click", closeModal);
+
+$("modalback").addEventListener("click", function(e) {
+
+  if (e.target === $("modalback")) {
+    closeModal();
+  }
+
+});
+
+// CONFIRM BOOKING
+
+$("confirmRide").addEventListener("click", function() {
+
+  const bookingId =
+    "RP" + Math.floor(100000 + Math.random() * 900000);
+
+  closeModal();
+
+  toast(
+    "Demo booking confirmed! " +
+    selectedRide +
+    " | ₹" +
+    selectedPrice +
+    " | ID: " +
+    bookingId
+  );
+
+});
+
+// ESCAPE KEY
+
+document.addEventListener("keydown", function(e) {
+
+  if (e.key === "Escape") {
+    closeModal();
+  }
+
+});
+
+</script>
+
+</body>
+</html>
